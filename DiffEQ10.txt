@@ -1,0 +1,41 @@
+> A=[3 -1;1 1]
+ > A=[3 -1;1 1]
+ |
+{Error: Unexpected MATLAB operator.
+} 
+A=[3 -1;1 1]
+
+A =
+
+     3    -1
+     1     1
+
+x0=[1;0]
+
+x0 =
+
+     1
+     0
+
+syms t, expm(A*t)
+ 
+ans =
+ 
+[ exp(2*t) + t*exp(2*t),       -t*exp(2*t)]
+[            t*exp(2*t), -exp(2*t)*(t - 1)]
+ 
+expAt = ans
+ 
+expAt =
+ 
+[ exp(2*t) + t*exp(2*t),       -t*exp(2*t)]
+[            t*exp(2*t), -exp(2*t)*(t - 1)]
+ 
+expAt * x0
+ 
+ans =
+ 
+ exp(2*t) + t*exp(2*t)
+            t*exp(2*t)
+ 
+diary off

@@ -1,0 +1,289 @@
+A=[-4 0 -4 3;-4 1 -1 1]
+
+A =
+
+    -4     0    -4     3
+    -4     1    -1     1
+
+help null
+ <strong>null</strong>   Null space.
+    Z = <strong>null</strong>(A) is an orthonormal basis for the null space of A obtained
+    from the singular value decomposition.  That is,  A*Z has negligible
+    elements, size(Z,2) is the nullity of A, and Z'*Z = I.
+ 
+    Z = <strong>null</strong>(A,'r') is a "rational" basis for the null space obtained
+    from the reduced row echelon form.  A*Z is zero, size(Z,2) is an
+    estimate for the nullity of A, and, if A is a small matrix with 
+    integer elements, the elements of R are ratios of small integers.  
+ 
+    The orthonormal basis is preferable numerically, while the rational
+    basis may be preferable pedagogically.
+ 
+    Example:
+ 
+        A =
+ 
+            1     2     3
+            1     2     3
+            1     2     3
+ 
+        Z = null(A); 
+ 
+        Computing the 1-norm of the matrix A*Z will be 
+        within a small tolerance
+ 
+        norm(A*Z,1)< 1e-12
+        ans =
+       
+           1
+ 
+        null(A,'r') = 
+ 
+           -2    -3
+            1     0
+            0     1
+ 
+    Class support for input A:
+       float: double, single
+ 
+    See also <a href="matlab:help svd">svd</a>, <a href="matlab:help orth">orth</a>, <a href="matlab:help rank">rank</a>, <a href="matlab:help rref">rref</a>.
+
+    Overloaded methods:
+       <a href="matlab:help gpuArray/null">gpuArray/null</a>
+       <a href="matlab:help xregpointer/null">xregpointer/null</a>
+       <a href="matlab:help sym/null">sym/null</a>
+
+    Reference page in Help browser
+       <a href="matlab:doc null">doc null</a>
+
+null(A)
+
+ans =
+
+   -0.2313    0.2247
+   -0.7772    0.4816
+    0.4812    0.3528
+    0.3331    0.7701
+
+null(A, 'r')
+
+ans =
+
+   -1.0000    0.7500
+   -3.0000    2.0000
+    1.0000         0
+         0    1.0000
+
+% The numbers for the basis are much more workable now
+u=[2 0 -1 3 4]
+
+u =
+
+     2     0    -1     3     4
+
+v=[1 0 0 -1 2]
+
+v =
+
+     1     0     0    -1     2
+
+w=[0 1 0 0 -1]
+
+w =
+
+     0     1     0     0    -1
+
+help rref
+ <strong>rref</strong>   Reduced row echelon form.
+    R = <strong>rref</strong>(A) produces the reduced row echelon form of A.
+ 
+    [R,jb] = <strong>rref</strong>(A) also returns a vector, jb, so that:
+        r = length(jb) is this algorithm's idea of the rank of A,
+        x(jb) are the bound variables in a linear system, Ax = b,
+        A(:,jb) is a basis for the range of A,
+        R(1:r,jb) is the r-by-r identity matrix.
+ 
+    [R,jb] = <strong>rref</strong>(A,TOL) uses the given tolerance in the rank tests.
+ 
+    Roundoff errors may cause this algorithm to compute a different
+    value for the rank than RANK, ORTH and NULL.
+ 
+    Class support for input A:
+       float: double, single
+ 
+    See also <a href="matlab:help rank">rank</a>, <a href="matlab:help orth">orth</a>, <a href="matlab:help null">null</a>, <a href="matlab:help qr">qr</a>, <a href="matlab:help svd">svd</a>.
+
+    Overloaded methods:
+       <a href="matlab:help sym/rref">sym/rref</a>
+
+    Reference page in Help browser
+       <a href="matlab:doc rref">doc rref</a>
+
+B=[u' v' w']
+
+B =
+
+     2     1     0
+     0     0     1
+    -1     0     0
+     3    -1     0
+     4     2    -1
+
+rref(B)
+
+ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+     0     0     0
+     0     0     0
+
+% Since the matrix has no free variables, the 3 vectors are in fact linearly independent
+
+x=[2;1;-2;9;3]
+
+x =
+
+     2
+     1
+    -2
+     9
+     3
+
+aug=[B x]
+
+aug =
+
+     2     1     0     2
+     0     0     1     1
+    -1     0     0    -2
+     3    -1     0     9
+     4     2    -1     3
+
+rref(B)
+
+ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+     0     0     0
+     0     0     0
+
+rref(aug)
+
+ans =
+
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+     0     0     0     1
+     0     0     0     0
+
+% The identity matrix is obtained again
+z=[-1;12;3;-12;-12]
+
+z =
+
+    -1
+    12
+     3
+   -12
+   -12
+
+aug2=[B z]
+
+aug2 =
+
+     2     1     0    -1
+     0     0     1    12
+    -1     0     0     3
+     3    -1     0   -12
+     4     2    -1   -12
+
+rref(aug2)
+
+ans =
+
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+     0     0     0     1
+     0     0     0     0
+
+y1=rand(3,1)
+
+y1 =
+
+    0.8147
+    0.9058
+    0.1270
+
+y2=rand(3,1)
+
+y2 =
+
+    0.9134
+    0.6324
+    0.0975
+
+y3=rand(3,1)
+
+y3 =
+
+    0.2785
+    0.5469
+    0.9575
+
+ymat=y1 y2 y3
+ ymat=y1 y2 y3
+         |
+{Error: Unexpected MATLAB expression.
+} 
+ymat=[y1 y2 y3]
+
+ymat =
+
+    0.8147    0.9134    0.2785
+    0.9058    0.6324    0.5469
+    0.1270    0.0975    0.9575
+
+C=ymat
+
+C =
+
+    0.8147    0.9134    0.2785
+    0.9058    0.6324    0.5469
+    0.1270    0.0975    0.9575
+
+det(C)
+
+ans =
+
+   -0.2767
+
+%This is the determinant
+
+inv(C)
+
+ans =
+
+   -1.9958    3.0630   -1.1690
+    2.8839   -2.6919    0.6987
+   -0.0291   -0.1320    1.1282
+
+% This is the inverse
+
+rref(C)
+
+ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+
+% Since the determinant is not 0, it makes sense the there is an inverse 
+% and the the three vectors are linearly independent.
+
+ diary off

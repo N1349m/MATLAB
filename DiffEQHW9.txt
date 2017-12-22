@@ -1,0 +1,129 @@
+% First, th function checks if the matrix is square
+% if not, the function stops. Then, the given number of
+% iterations says how many times to run the loop
+% In each iteration, a value iscalculated using the given formula.
+% If this value is lower than the minimum or higher than the
+% maximum, calculated earlier, the value is assigned to those,
+% respectively. Finally, the final values are outputed, and the true
+% values are calculated
+A=[8 1 1;1 8 1;1 1 8]
+
+A =
+
+     8     1     1
+     1     8     1
+     1     1     8
+
+B=[1 2 3;2 4 5;3 5 6]
+
+B =
+
+     1     2     3
+     2     4     5
+     3     5     6
+
+C=[3 0 0;-4 6 2;16 -15 -5]
+
+C =
+
+     3     0     0
+    -4     6     2
+    16   -15    -5
+
+[S,D]=evalues(A,3)
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('min')" style="font-weight:bold">min</a>
+MIN with two matrices to compare and a working
+dimension is not supported.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('evalues', 'D:\Ter-Hydra\My Documents\MATLAB\evalues.m', 24)" style="font-weight:bold">evalues</a> (<a href="matlab: opentoline('D:\Ter-Hydra\My Documents\MATLAB\evalues.m',24,0)">line 24</a>)
+    min iter = 0;
+} 
+[S,D]=evalues(A,3)
+
+ Smallest eigenvalue (estimated): 7.063414
+
+ Largest eigenvalue (estimated): 7.376894
+
+ The true eigenvalues and eigenvectors are
+
+S =
+
+    0.0920    0.8113    0.5774
+    0.6566   -0.4853    0.5774
+   -0.7486   -0.3260    0.5774
+
+
+D =
+
+    7.0000         0         0
+         0    7.0000         0
+         0         0   10.0000
+
+[S,D]=evalues(A,6)
+
+ Smallest eigenvalue (estimated): 7.276367
+
+ Largest eigenvalue (estimated): 9.934067
+
+ The true eigenvalues and eigenvectors are
+
+S =
+
+    0.0920    0.8113    0.5774
+    0.6566   -0.4853    0.5774
+   -0.7486   -0.3260    0.5774
+
+
+D =
+
+    7.0000         0         0
+         0    7.0000         0
+         0         0   10.0000
+
+[S,D]=evalues(B,6)
+
+ Smallest eigenvalue (estimated): -0.457871
+
+ Largest eigenvalue (estimated): 9.197678
+
+ The true eigenvalues and eigenvectors are
+
+S =
+
+    0.7370    0.5910    0.3280
+    0.3280   -0.7370    0.5910
+   -0.5910    0.3280    0.7370
+
+
+D =
+
+   -0.5157         0         0
+         0    0.1709         0
+         0         0   11.3448
+
+[S,D]=evalues(C,6)
+
+Warning! The matrix is not symmetric!
+
+ Smallest eigenvalue (estimated): -1.969801
+
+ Largest eigenvalue (estimated): 12.409980
+
+ The true eigenvalues and eigenvectors are
+
+S =
+
+         0         0    0.4472
+    0.3162   -0.3714    0.0000
+   -0.9487    0.9285    0.8944
+
+
+D =
+
+    0.0000         0         0
+         0    1.0000         0
+         0         0    3.0000
+
+%The program worked well for the first 2 matrices, but was innacurate
+% for the third, since it was not symmetric
+diary off

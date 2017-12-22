@@ -1,0 +1,1935 @@
+help plot
+ <strong>plot</strong>   Linear plot. 
+    <strong>plot</strong>(X,Y) plots vector Y versus vector X. If X or Y is a matrix,
+    then the vector is plotted versus the rows or columns of the matrix,
+    whichever line up.  If X is a scalar and Y is a vector, disconnected
+    line objects are created and plotted as discrete points vertically at
+    X.
+ 
+    <strong>plot</strong>(Y) plots the columns of Y versus their index.
+    If Y is complex, <strong>plot</strong>(Y) is equivalent to <strong>plot</strong>(real(Y),imag(Y)).
+    In all other uses of <strong>plot</strong>, the imaginary part is ignored.
+ 
+    Various line types, plot symbols and colors may be obtained with
+    <strong>plot</strong>(X,Y,S) where S is a character string made from one element
+    from any or all the following 3 columns:
+ 
+           b     blue          .     point              -     solid
+           g     green         o     circle             :     dotted
+           r     red           x     x-mark             -.    dashdot 
+           c     cyan          +     plus               --    dashed   
+           m     magenta       *     star             (none)  no line
+           y     yellow        s     square
+           k     black         d     diamond
+           w     white         v     triangle (down)
+                               ^     triangle (up)
+                               <     triangle (left)
+                               >     triangle (right)
+                               p     pentagram
+                               h     hexagram
+                          
+    For example, <strong>plot</strong>(X,Y,'c+:') plots a cyan dotted line with a plus 
+    at each data point; <strong>plot</strong>(X,Y,'bd') plots blue diamond at each data 
+    point but does not draw any line.
+ 
+    <strong>plot</strong>(X1,Y1,S1,X2,Y2,S2,X3,Y3,S3,...) combines the plots defined by
+    the (X,Y,S) triples, where the X's and Y's are vectors or matrices 
+    and the S's are strings.  
+ 
+    For example, <strong>plot</strong>(X,Y,'y-',X,Y,'go') plots the data twice, with a
+    solid yellow line interpolating green circles at the data points.
+ 
+    The <strong>plot</strong> command, if no color is specified, makes automatic use of
+    the colors specified by the axes ColorOrder property.  By default,
+    <strong>plot</strong> cycles through the colors in the ColorOrder property.  For
+    monochrome systems, <strong>plot</strong> cycles over the axes LineStyleOrder property.
+ 
+    Note that RGB colors in the ColorOrder property may differ from
+    similarly-named colors in the (X,Y,S) triples.  For example, the 
+    second axes ColorOrder property is medium green with RGB [0 .5 0],
+    while <strong>plot</strong>(X,Y,'g') plots a green line with RGB [0 1 0].
+ 
+    If you do not specify a marker type, <strong>plot</strong> uses no marker. 
+    If you do not specify a line style, <strong>plot</strong> uses a solid line.
+ 
+    <strong>plot</strong>(AX,...) plots into the axes with handle AX.
+ 
+    <strong>plot</strong> returns a column vector of handles to lineseries objects, one
+    handle per plotted line. 
+ 
+    The X,Y pairs, or X,Y,S triples, can be followed by 
+    parameter/value pairs to specify additional properties 
+    of the lines. For example, <strong>plot</strong>(X,Y,'LineWidth',2,'Color',[.6 0 0]) 
+    will create a plot with a dark red line width of 2 points.
+ 
+    Example
+       x = -pi:pi/10:pi;
+       y = tan(sin(x)) - sin(tan(x));
+       plot(x,y,'--rs','LineWidth',2,...
+                       'MarkerEdgeColor','k',...
+                       'MarkerFaceColor','g',...
+                       'MarkerSize',10)
+ 
+    See also <a href="matlab:help plottools">plottools</a>, <a href="matlab:help semilogx">semilogx</a>, <a href="matlab:help semilogy">semilogy</a>, <a href="matlab:help loglog">loglog</a>, <a href="matlab:help plotyy">plotyy</a>, <a href="matlab:help plot3">plot3</a>, <a href="matlab:help grid">grid</a>,
+    <a href="matlab:help title">title</a>, <a href="matlab:help xlabel">xlabel</a>, <a href="matlab:help ylabel">ylabel</a>, <a href="matlab:help axis">axis</a>, <a href="matlab:help axes">axes</a>, <a href="matlab:help hold">hold</a>, <a href="matlab:help legend">legend</a>, <a href="matlab:help subplot">subplot</a>, <a href="matlab:help scatter">scatter</a>.
+
+    Overloaded methods:
+       <a href="matlab:help alphaShape/plot">alphaShape/plot</a>
+       <a href="matlab:help duration/plot">duration/plot</a>
+       <a href="matlab:help datetime/plot">datetime/plot</a>
+       <a href="matlab:help phytree/plot">phytree/plot</a>
+       <a href="matlab:help clustergram/plot">clustergram/plot</a>
+       <a href="matlab:help HeatMap/plot">HeatMap/plot</a>
+       <a href="matlab:help channel.plot">channel.plot</a>
+       <a href="matlab:help sfit/plot">sfit/plot</a>
+       <a href="matlab:help cfit/plot">cfit/plot</a>
+       <a href="matlab:help fints/plot">fints/plot</a>
+       <a href="matlab:help iddata/plot">iddata/plot</a>
+       <a href="matlab:help idnlhw/plot">idnlhw/plot</a>
+       <a href="matlab:help idnlarx/plot">idnlarx/plot</a>
+       <a href="matlab:help cgrules/plot">cgrules/plot</a>
+       <a href="matlab:help xregtwostage/plot">xregtwostage/plot</a>
+       <a href="matlab:help xregtransient/plot">xregtransient/plot</a>
+       <a href="matlab:help xregmodel/plot">xregmodel/plot</a>
+       <a href="matlab:help xregarx/plot">xregarx/plot</a>
+       <a href="matlab:help localmulti/plot">localmulti/plot</a>
+       <a href="matlab:help localmod/plot">localmod/plot</a>
+       <a href="matlab:help localavfit/plot">localavfit/plot</a>
+       <a href="matlab:help sweepset/plot">sweepset/plot</a>
+       <a href="matlab:help mdevtestplan/plot">mdevtestplan/plot</a>
+       <a href="matlab:help cgdatasetnode/plot">cgdatasetnode/plot</a>
+       <a href="matlab:help frd/plot">frd/plot</a>
+       <a href="matlab:help dspdata.plot">dspdata.plot</a>
+       <a href="matlab:help LinearModel/plot">LinearModel/plot</a>
+       <a href="matlab:help timeseries/plot">timeseries/plot</a>
+       <a href="matlab:help wdectree/plot">wdectree/plot</a>
+       <a href="matlab:help ntree/plot">ntree/plot</a>
+       <a href="matlab:help dtree/plot">dtree/plot</a>
+       <a href="matlab:help wvtree/plot">wvtree/plot</a>
+       <a href="matlab:help rwvtree/plot">rwvtree/plot</a>
+       <a href="matlab:help edwttree/plot">edwttree/plot</a>
+
+    Reference page in Help browser
+       <a href="matlab:doc plot">doc plot</a>
+
+m=linspace(-10 10 1000)
+ m=linspace(-10 10 1000)
+                |
+{Error: Unexpected MATLAB expression.
+} 
+m=linspace(-10,10,1000)
+
+z=m.^4+m.^3-3*m.^2-5*m-2
+
+
+plot(m,z)
+axis([-4 4 -10 10])
+grid on
+% let a be the vector m^2-m-2 and b be the vector m^2+2m+1
+a=m.^2-m-2
+
+b=m.^2+2*m+1;
+diary off
+y=a.*b
+
+y-z<0.001
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('minus')" style="font-weight:bold"> - </a>
+Matrix dimensions must agree.
+} 
+y-z<0.001
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('minus')" style="font-weight:bold"> - </a>
+Matrix dimensions must agree.
+} 
+y=a.*b
+
+y =
+
+  Columns 1 through 4
+
+  648.0000  645.4799  642.9646  640.4541
+
+  Columns 5 through 8
+
+  637.9484  635.4475  632.9514  630.4602
+
+  Columns 9 through 12
+
+  627.9737  625.4921  623.0153  620.5432
+
+  Columns 13 through 16
+
+  618.0760  615.6136  613.1560  610.7032
+
+  Columns 17 through 20
+
+  608.2553  605.8121  603.3738  600.9402
+
+  Columns 21 through 24
+
+  598.5115  596.0875  593.6684  591.2541
+
+  Columns 25 through 28
+
+  588.8446  586.4399  584.0401  581.6450
+
+  Columns 29 through 32
+
+  579.2547  576.8693  574.4887  572.1128
+
+  Columns 33 through 36
+
+  569.7418  567.3756  565.0142  562.6576
+
+  Columns 37 through 40
+
+  560.3058  557.9588  555.6167  553.2793
+
+  Columns 41 through 44
+
+  550.9468  548.6191  546.2961  543.9780
+
+  Columns 45 through 48
+
+  541.6647  539.3562  537.0525  534.7537
+
+  Columns 49 through 52
+
+  532.4596  530.1703  527.8859  525.6063
+
+  Columns 53 through 56
+
+  523.3314  521.0614  518.7962  516.5358
+
+  Columns 57 through 60
+
+  514.2802  512.0294  509.7835  507.5423
+
+  Columns 61 through 64
+
+  505.3060  503.0744  500.8477  498.6258
+
+  Columns 65 through 68
+
+  496.4086  494.1963  491.9889  489.7862
+
+  Columns 69 through 72
+
+  487.5883  485.3952  483.2070  481.0235
+
+  Columns 73 through 76
+
+  478.8449  476.6711  474.5021  472.3379
+
+  Columns 77 through 80
+
+  470.1785  468.0239  465.8741  463.7291
+
+  Columns 81 through 84
+
+  461.5890  459.4536  457.3231  455.1973
+
+  Columns 85 through 88
+
+  453.0764  450.9603  448.8490  446.7425
+
+  Columns 89 through 92
+
+  444.6408  442.5440  440.4519  438.3647
+
+  Columns 93 through 96
+
+  436.2822  434.2046  432.1318  430.0637
+
+  Columns 97 through 100
+
+  428.0005  425.9421  423.8886  421.8398
+
+  Columns 101 through 104
+
+  419.7958  417.7567  415.7223  413.6928
+
+  Columns 105 through 108
+
+  411.6681  409.6481  407.6330  405.6227
+
+  Columns 109 through 112
+
+  403.6172  401.6166  399.6207  397.6296
+
+  Columns 113 through 116
+
+  395.6434  393.6619  391.6853  389.7135
+
+  Columns 117 through 120
+
+  387.7465  385.7843  383.8269  381.8743
+
+  Columns 121 through 124
+
+  379.9265  377.9836  376.0454  374.1121
+
+  Columns 125 through 128
+
+  372.1835  370.2598  368.3409  366.4268
+
+  Columns 129 through 132
+
+  364.5175  362.6130  360.7133  358.8184
+
+  Columns 133 through 136
+
+  356.9284  355.0431  353.1627  351.2871
+
+  Columns 137 through 140
+
+  349.4163  347.5502  345.6890  343.8326
+
+  Columns 141 through 144
+
+  341.9811  340.1343  338.2923  336.4552
+
+  Columns 145 through 148
+
+  334.6228  332.7953  330.9726  329.1547
+
+  Columns 149 through 152
+
+  327.3416  325.5333  323.7298  321.9311
+
+  Columns 153 through 156
+
+  320.1372  318.3482  316.5639  314.7845
+
+  Columns 157 through 160
+
+  313.0099  311.2401  309.4750  307.7148
+
+  Columns 161 through 164
+
+  305.9595  304.2089  302.4631  300.7222
+
+  Columns 165 through 168
+
+  298.9860  297.2547  295.5281  293.8064
+
+  Columns 169 through 172
+
+  292.0895  290.3774  288.6701  286.9676
+
+  Columns 173 through 176
+
+  285.2699  283.5771  281.8890  280.2058
+
+  Columns 177 through 180
+
+  278.5273  276.8537  275.1849  273.5209
+
+  Columns 181 through 184
+
+  271.8617  270.2073  268.5577  266.9130
+
+  Columns 185 through 188
+
+  265.2730  263.6379  262.0075  260.3820
+
+  Columns 189 through 192
+
+  258.7613  257.1454  255.5343  253.9280
+
+  Columns 193 through 196
+
+  252.3265  250.7298  249.1380  247.5509
+
+  Columns 197 through 200
+
+  245.9687  244.3912  242.8186  241.2508
+
+  Columns 201 through 204
+
+  239.6878  238.1296  236.5762  235.0276
+
+  Columns 205 through 208
+
+  233.4839  231.9449  230.4108  228.8814
+
+  Columns 209 through 212
+
+  227.3569  225.8372  224.3223  222.8122
+
+  Columns 213 through 216
+
+  221.3069  219.8064  218.3107  216.8199
+
+  Columns 217 through 220
+
+  215.3338  213.8526  212.3761  210.9045
+
+  Columns 221 through 224
+
+  209.4377  207.9757  206.5185  205.0661
+
+  Columns 225 through 228
+
+  203.6186  202.1758  200.7378  199.3047
+
+  Columns 229 through 232
+
+  197.8764  196.4528  195.0341  193.6202
+
+  Columns 233 through 236
+
+  192.2111  190.8068  189.4074  188.0127
+
+  Columns 237 through 240
+
+  186.6228  185.2378  183.8575  182.4821
+
+  Columns 241 through 244
+
+  181.1115  179.7457  178.3847  177.0285
+
+  Columns 245 through 248
+
+  175.6771  174.3305  172.9888  171.6518
+
+  Columns 249 through 252
+
+  170.3197  168.9923  167.6698  166.3521
+
+  Columns 253 through 256
+
+  165.0392  163.7311  162.4278  161.1293
+
+  Columns 257 through 260
+
+  159.8357  158.5468  157.2628  155.9835
+
+  Columns 261 through 264
+
+  154.7091  153.4395  152.1747  150.9147
+
+  Columns 265 through 268
+
+  149.6595  148.4091  147.1635  145.9228
+
+  Columns 269 through 272
+
+  144.6868  143.4557  142.2294  141.0078
+
+  Columns 273 through 276
+
+  139.7911  138.5792  137.3721  136.1699
+
+  Columns 277 through 280
+
+  134.9724  133.7797  132.5919  131.4088
+
+  Columns 281 through 284
+
+  130.2306  129.0572  127.8885  126.7247
+
+  Columns 285 through 288
+
+  125.5657  124.4115  123.2622  122.1176
+
+  Columns 289 through 292
+
+  120.9778  119.8429  118.7128  117.5874
+
+  Columns 293 through 296
+
+  116.4669  115.3512  114.2403  113.1342
+
+  Columns 297 through 300
+
+  112.0329  110.9364  109.8448  108.7579
+
+  Columns 301 through 304
+
+  107.6759  106.5987  105.5262  104.4586
+
+  Columns 305 through 308
+
+  103.3958  102.3378  101.2846  100.2363
+
+  Columns 309 through 312
+
+   99.1927   98.1539   97.1200   96.0909
+
+  Columns 313 through 316
+
+   95.0665   94.0470   93.0323   92.0224
+
+  Columns 317 through 320
+
+   91.0173   90.0170   89.0216   88.0309
+
+  Columns 321 through 324
+
+   87.0451   86.0640   85.0878   84.1164
+
+  Columns 325 through 328
+
+   83.1497   82.1879   81.2309   80.2788
+
+  Columns 329 through 332
+
+   79.3314   78.3888   77.4511   76.5181
+
+  Columns 333 through 336
+
+   75.5900   74.6667   73.7482   72.8344
+
+  Columns 337 through 340
+
+   71.9255   71.0215   70.1222   69.2277
+
+  Columns 341 through 344
+
+   68.3381   67.4532   66.5732   65.6979
+
+  Columns 345 through 348
+
+   64.8275   63.9619   63.1011   62.2451
+
+  Columns 349 through 352
+
+   61.3939   60.5476   59.7060   58.8692
+
+  Columns 353 through 356
+
+   58.0373   57.2102   56.3878   55.5703
+
+  Columns 357 through 360
+
+   54.7576   53.9497   53.1466   52.3484
+
+  Columns 361 through 364
+
+   51.5549   50.7662   49.9824   49.2034
+
+  Columns 365 through 368
+
+   48.4291   47.6597   46.8951   46.1353
+
+  Columns 369 through 372
+
+   45.3803   44.6301   43.8848   43.1442
+
+  Columns 373 through 376
+
+   42.4085   41.6775   40.9514   40.2301
+
+  Columns 377 through 380
+
+   39.5136   38.8019   38.0950   37.3929
+
+  Columns 381 through 384
+
+   36.6956   36.0031   35.3155   34.6326
+
+  Columns 385 through 388
+
+   33.9546   33.2814   32.6130   31.9494
+
+  Columns 389 through 392
+
+   31.2906   30.6366   29.9874   29.3430
+
+  Columns 393 through 396
+
+   28.7035   28.0687   27.4388   26.8136
+
+  Columns 397 through 400
+
+   26.1933   25.5778   24.9671   24.3612
+
+  Columns 401 through 404
+
+   23.7601   23.1639   22.5724   21.9858
+
+  Columns 405 through 408
+
+   21.4039   20.8269   20.2547   19.6872
+
+  Columns 409 through 412
+
+   19.1246   18.5668   18.0139   17.4657
+
+  Columns 413 through 416
+
+   16.9223   16.3838   15.8500   15.3211
+
+  Columns 417 through 420
+
+   14.7969   14.2776   13.7631   13.2534
+
+  Columns 421 through 424
+
+   12.7485   12.2485   11.7532   11.2627
+
+  Columns 425 through 428
+
+   10.7771   10.2962    9.8202    9.3490
+
+  Columns 429 through 432
+
+    8.8826    8.4210    7.9642    7.5122
+
+  Columns 433 through 436
+
+    7.0650    6.6226    6.1851    5.7523
+
+  Columns 437 through 440
+
+    5.3244    4.9013    4.4830    4.0695
+
+  Columns 441 through 444
+
+    3.6608    3.2569    2.8578    2.4635
+
+  Columns 445 through 448
+
+    2.0741    1.6894    1.3096    0.9346
+
+  Columns 449 through 452
+
+    0.5643    0.1989   -0.1617   -0.5175
+
+  Columns 453 through 456
+
+   -0.8684   -1.2146   -1.5560   -1.8925
+
+  Columns 457 through 460
+
+   -2.2243   -2.5512   -2.8733   -3.1907
+
+  Columns 461 through 464
+
+   -3.5032   -3.8108   -4.1137   -4.4118
+
+  Columns 465 through 468
+
+   -4.7051   -4.9935   -5.2772   -5.5560
+
+  Columns 469 through 472
+
+   -5.8300   -6.0993   -6.3637   -6.6233
+
+  Columns 473 through 476
+
+   -6.8781   -7.1280   -7.3732   -7.6136
+
+  Columns 477 through 480
+
+   -7.8491   -8.0799   -8.3058   -8.5269
+
+  Columns 481 through 484
+
+   -8.7432   -8.9547   -9.1614   -9.3633
+
+  Columns 485 through 488
+
+   -9.5604   -9.7526   -9.9401  -10.1227
+
+  Columns 489 through 492
+
+  -10.3006  -10.4736  -10.6418  -10.8052
+
+  Columns 493 through 496
+
+  -10.9638  -11.1176  -11.2666  -11.4108
+
+  Columns 497 through 500
+
+  -11.5501  -11.6847  -11.8144  -11.9393
+
+  Columns 501 through 504
+
+  -12.0595  -12.1748  -12.2853  -12.3910
+
+  Columns 505 through 508
+
+  -12.4918  -12.5879  -12.6792  -12.7656
+
+  Columns 509 through 512
+
+  -12.8473  -12.9241  -12.9961  -13.0633
+
+  Columns 513 through 516
+
+  -13.1258  -13.1833  -13.2361  -13.2841
+
+  Columns 517 through 520
+
+  -13.3273  -13.3656  -13.3992  -13.4279
+
+  Columns 521 through 524
+
+  -13.4518  -13.4710  -13.4853  -13.4948
+
+  Columns 525 through 528
+
+  -13.4995  -13.4993  -13.4944  -13.4847
+
+  Columns 529 through 532
+
+  -13.4701  -13.4508  -13.4266  -13.3976
+
+  Columns 533 through 536
+
+  -13.3638  -13.3252  -13.2818  -13.2336
+
+  Columns 537 through 540
+
+  -13.1806  -13.1227  -13.0601  -12.9926
+
+  Columns 541 through 544
+
+  -12.9204  -12.8433  -12.7614  -12.6747
+
+  Columns 545 through 548
+
+  -12.5832  -12.4869  -12.3858  -12.2799
+
+  Columns 549 through 552
+
+  -12.1691  -12.0536  -11.9332  -11.8080
+
+  Columns 553 through 556
+
+  -11.6781  -11.5433  -11.4037  -11.2593
+
+  Columns 557 through 560
+
+  -11.1100  -10.9560  -10.7972  -10.6335
+
+  Columns 561 through 564
+
+  -10.4651  -10.2918  -10.1137   -9.9308
+
+  Columns 565 through 568
+
+   -9.7431   -9.5506   -9.3533   -9.1512
+
+  Columns 569 through 572
+
+   -8.9443   -8.7325   -8.5160   -8.2946
+
+  Columns 573 through 576
+
+   -8.0684   -7.8375   -7.6017   -7.3611
+
+  Columns 577 through 580
+
+   -7.1157   -6.8654   -6.6104   -6.3506
+
+  Columns 581 through 584
+
+   -6.0859   -5.8165   -5.5422   -5.2631
+
+  Columns 585 through 588
+
+   -4.9792   -4.6905   -4.3970   -4.0987
+
+  Columns 589 through 592
+
+   -3.7956   -3.4876   -3.1749   -2.8573
+
+  Columns 593 through 596
+
+   -2.5350   -2.2078   -1.8758   -1.5390
+
+  Columns 597 through 600
+
+   -1.1974   -0.8510   -0.4998   -0.1438
+
+  Columns 601 through 604
+
+    0.2171    0.5827    0.9532    1.3285
+
+  Columns 605 through 608
+
+    1.7085    2.0934    2.4831    2.8776
+
+  Columns 609 through 612
+
+    3.2770    3.6811    4.0900    4.5038
+
+  Columns 613 through 616
+
+    4.9223    5.3457    5.7739    6.2069
+
+  Columns 617 through 620
+
+    6.6447    7.0873    7.5347    7.9869
+
+  Columns 621 through 624
+
+    8.4439    8.9058    9.3724    9.8439
+
+  Columns 625 through 628
+
+   10.3202   10.8012   11.2871   11.7778
+
+  Columns 629 through 632
+
+   12.2733   12.7737   13.2788   13.7887
+
+  Columns 633 through 636
+
+   14.3035   14.8230   15.3474   15.8766
+
+  Columns 637 through 640
+
+   16.4106   16.9494   17.4930   18.0414
+
+  Columns 641 through 644
+
+   18.5946   19.1527   19.7155   20.2832
+
+  Columns 645 through 648
+
+   20.8556   21.4329   22.0150   22.6019
+
+  Columns 649 through 652
+
+   23.1936   23.7901   24.3914   24.9975
+
+  Columns 653 through 656
+
+   25.6085   26.2242   26.8448   27.4702
+
+  Columns 657 through 660
+
+   28.1003   28.7353   29.3751   30.0197
+
+  Columns 661 through 664
+
+   30.6692   31.3234   31.9824   32.6463
+
+  Columns 665 through 668
+
+   33.3149   33.9884   34.6667   35.3498
+
+  Columns 669 through 672
+
+   36.0376   36.7304   37.4279   38.1302
+
+  Columns 673 through 676
+
+   38.8373   39.5493   40.2660   40.9876
+
+  Columns 677 through 680
+
+   41.7140   42.4451   43.1811   43.9219
+
+  Columns 681 through 684
+
+   44.6675   45.4180   46.1732   46.9332
+
+  Columns 685 through 688
+
+   47.6981   48.4677   49.2422   50.0215
+
+  Columns 689 through 692
+
+   50.8056   51.5945   52.3882   53.1867
+
+  Columns 693 through 696
+
+   53.9900   54.7981   55.6111   56.4288
+
+  Columns 697 through 700
+
+   57.2514   58.0788   58.9110   59.7480
+
+  Columns 701 through 704
+
+   60.5898   61.4364   62.2878   63.1440
+
+  Columns 705 through 708
+
+   64.0051   64.8709   65.7416   66.6171
+
+  Columns 709 through 712
+
+   67.4973   68.3824   69.2723   70.1670
+
+  Columns 713 through 716
+
+   71.0666   71.9709   72.8800   73.7940
+
+  Columns 717 through 720
+
+   74.7127   75.6363   76.5647   77.4978
+
+  Columns 721 through 724
+
+   78.4358   79.3786   80.3263   81.2787
+
+  Columns 725 through 728
+
+   82.2359   83.1980   84.1648   85.1365
+
+  Columns 729 through 732
+
+   86.1129   87.0942   88.0803   89.0712
+
+  Columns 733 through 736
+
+   90.0669   91.0675   92.0728   93.0829
+
+  Columns 737 through 740
+
+   94.0979   95.1176   96.1422   97.1716
+
+  Columns 741 through 744
+
+   98.2058   99.2448  100.2886  101.3372
+
+  Columns 745 through 748
+
+  102.3906  103.4488  104.5119  105.5797
+
+  Columns 749 through 752
+
+  106.6524  107.7299  108.8122  109.8993
+
+  Columns 753 through 756
+
+  110.9912  112.0879  113.1894  114.2957
+
+  Columns 757 through 760
+
+  115.4069  116.5228  117.6436  118.7691
+
+  Columns 761 through 764
+
+  119.8995  121.0347  122.1747  123.3195
+
+  Columns 765 through 768
+
+  124.4691  125.6236  126.7828  127.9469
+
+  Columns 769 through 772
+
+  129.1157  130.2894  131.4679  132.6511
+
+  Columns 773 through 776
+
+  133.8392  135.0321  136.2299  137.4324
+
+  Columns 777 through 780
+
+  138.6397  139.8519  141.0688  142.2906
+
+  Columns 781 through 784
+
+  143.5171  144.7485  145.9847  147.2257
+
+  Columns 785 through 788
+
+  148.4715  149.7221  150.9776  152.2378
+
+  Columns 789 through 792
+
+  153.5029  154.7727  156.0474  157.3269
+
+  Columns 793 through 796
+
+  158.6112  159.9002  161.1942  162.4929
+
+  Columns 797 through 800
+
+  163.7964  165.1047  166.4179  167.7358
+
+  Columns 801 through 804
+
+  169.0586  170.3862  171.7186  173.0557
+
+  Columns 805 through 808
+
+  174.3977  175.7446  177.0962  178.4526
+
+  Columns 809 through 812
+
+  179.8139  181.1799  182.5508  183.9264
+
+  Columns 813 through 816
+
+  185.3069  186.6922  188.0823  189.4772
+
+  Columns 817 through 820
+
+  190.8769  192.2815  193.6908  195.1049
+
+  Columns 821 through 824
+
+  196.5239  197.9477  199.3762  200.8096
+
+  Columns 825 through 828
+
+  202.2478  203.6908  205.1386  206.5913
+
+  Columns 829 through 832
+
+  208.0487  209.5109  210.9780  212.4499
+
+  Columns 833 through 836
+
+  213.9265  215.4080  216.8943  218.3854
+
+  Columns 837 through 840
+
+  219.8813  221.3820  222.8876  224.3979
+
+  Columns 841 through 844
+
+  225.9130  227.4330  228.9578  230.4874
+
+  Columns 845 through 848
+
+  232.0217  233.5609  235.1049  236.6538
+
+  Columns 849 through 852
+
+  238.2074  239.7658  241.3291  242.8971
+
+  Columns 853 through 856
+
+  244.4700  246.0477  247.6301  249.2174
+
+  Columns 857 through 860
+
+  250.8095  252.4064  254.0082  255.6147
+
+  Columns 861 through 864
+
+  257.2260  258.8422  260.4632  262.0889
+
+  Columns 865 through 868
+
+  263.7195  265.3549  266.9951  268.6401
+
+  Columns 869 through 872
+
+  270.2899  271.9445  273.6040  275.2682
+
+  Columns 873 through 876
+
+  276.9373  278.6112  280.2898  281.9733
+
+  Columns 877 through 880
+
+  283.6616  285.3547  287.0526  288.7553
+
+  Columns 881 through 884
+
+  290.4629  292.1752  293.8924  295.6143
+
+  Columns 885 through 888
+
+  297.3411  299.0727  300.8091  302.5503
+
+  Columns 889 through 892
+
+  304.2963  306.0471  307.8027  309.5632
+
+  Columns 893 through 896
+
+  311.3284  313.0985  314.8734  316.6530
+
+  Columns 897 through 900
+
+  318.4375  320.2268  322.0209  323.8198
+
+  Columns 901 through 904
+
+  325.6236  327.4321  329.2454  331.0636
+
+  Columns 905 through 908
+
+  332.8866  334.7143  336.5469  338.3843
+
+  Columns 909 through 912
+
+  340.2265  342.0735  343.9254  345.7820
+
+  Columns 913 through 916
+
+  347.6434  349.5097  351.3807  353.2566
+
+  Columns 917 through 920
+
+  355.1373  357.0228  358.9131  360.8082
+
+  Columns 921 through 924
+
+  362.7081  364.6128  366.5224  368.4367
+
+  Columns 925 through 928
+
+  370.3559  372.2798  374.2086  376.1422
+
+  Columns 929 through 932
+
+  378.0806  380.0238  381.9718  383.9246
+
+  Columns 933 through 936
+
+  385.8823  387.8447  389.8120  391.7840
+
+  Columns 937 through 940
+
+  393.7609  395.7426  397.7291  399.7204
+
+  Columns 941 through 944
+
+  401.7165  403.7174  405.7231  407.7337
+
+  Columns 945 through 948
+
+  409.7490  411.7692  413.7941  415.8239
+
+  Columns 949 through 952
+
+  417.8585  419.8979  421.9421  423.9911
+
+  Columns 953 through 956
+
+  426.0450  428.1036  430.1670  432.2353
+
+  Columns 957 through 960
+
+  434.3084  436.3862  438.4689  440.5564
+
+  Columns 961 through 964
+
+  442.6487  444.7458  446.8477  448.9545
+
+  Columns 965 through 968
+
+  451.0660  453.1824  455.3035  457.4295
+
+  Columns 969 through 972
+
+  459.5603  461.6959  463.8363  465.9815
+
+  Columns 973 through 976
+
+  468.1315  470.2863  472.4459  474.6104
+
+  Columns 977 through 980
+
+  476.7797  478.9537  481.1326  483.3163
+
+  Columns 981 through 984
+
+  485.5048  487.6981  489.8962  492.0991
+
+  Columns 985 through 988
+
+  494.3068  496.5194  498.7367  500.9589
+
+  Columns 989 through 992
+
+  503.1859  505.4177  507.6542  509.8956
+
+  Columns 993 through 996
+
+  512.1419  514.3929  516.6487  518.9093
+
+  Columns 997 through 1000
+
+  521.1748  523.4451  525.7201  528.0000
+
+y-z<0.001
+
+ans =
+
+  Columns 1 through 6
+
+     1     1     1     1     1     1
+
+  Columns 7 through 12
+
+     1     1     1     1     1     1
+
+  Columns 13 through 18
+
+     1     1     1     1     1     1
+
+  Columns 19 through 24
+
+     1     1     1     1     1     1
+
+  Columns 25 through 30
+
+     1     1     1     1     1     1
+
+  Columns 31 through 36
+
+     1     1     1     1     1     1
+
+  Columns 37 through 42
+
+     1     1     1     1     1     1
+
+  Columns 43 through 48
+
+     1     1     1     1     1     1
+
+  Columns 49 through 54
+
+     1     1     1     1     1     1
+
+  Columns 55 through 60
+
+     1     1     1     1     1     1
+
+  Columns 61 through 66
+
+     1     1     1     1     1     1
+
+  Columns 67 through 72
+
+     1     1     1     1     1     1
+
+  Columns 73 through 78
+
+     1     1     1     1     1     1
+
+  Columns 79 through 84
+
+     1     1     1     1     1     1
+
+  Columns 85 through 90
+
+     1     1     1     1     1     1
+
+  Columns 91 through 96
+
+     1     1     1     1     1     1
+
+  Columns 97 through 102
+
+     1     1     1     1     1     1
+
+  Columns 103 through 108
+
+     1     1     1     1     1     1
+
+  Columns 109 through 114
+
+     1     1     1     1     1     1
+
+  Columns 115 through 120
+
+     1     1     1     1     1     1
+
+  Columns 121 through 126
+
+     1     1     1     1     1     1
+
+  Columns 127 through 132
+
+     1     1     1     1     1     1
+
+  Columns 133 through 138
+
+     1     1     1     1     1     1
+
+  Columns 139 through 144
+
+     1     1     1     1     1     1
+
+  Columns 145 through 150
+
+     1     1     1     1     1     1
+
+  Columns 151 through 156
+
+     1     1     1     1     1     1
+
+  Columns 157 through 162
+
+     1     1     1     1     1     1
+
+  Columns 163 through 168
+
+     1     1     1     1     1     1
+
+  Columns 169 through 174
+
+     1     1     1     1     1     1
+
+  Columns 175 through 180
+
+     1     1     1     1     1     1
+
+  Columns 181 through 186
+
+     1     1     1     1     1     1
+
+  Columns 187 through 192
+
+     1     1     1     1     1     1
+
+  Columns 193 through 198
+
+     1     1     1     1     1     1
+
+  Columns 199 through 204
+
+     1     1     1     1     1     1
+
+  Columns 205 through 210
+
+     1     1     1     1     1     1
+
+  Columns 211 through 216
+
+     1     1     1     1     1     1
+
+  Columns 217 through 222
+
+     1     1     1     1     1     1
+
+  Columns 223 through 228
+
+     1     1     1     1     1     1
+
+  Columns 229 through 234
+
+     1     1     1     1     1     1
+
+  Columns 235 through 240
+
+     1     1     1     1     1     1
+
+  Columns 241 through 246
+
+     1     1     1     1     1     1
+
+  Columns 247 through 252
+
+     1     1     1     1     1     1
+
+  Columns 253 through 258
+
+     1     1     1     1     1     1
+
+  Columns 259 through 264
+
+     1     1     1     1     1     1
+
+  Columns 265 through 270
+
+     1     1     1     1     1     1
+
+  Columns 271 through 276
+
+     1     1     1     1     1     1
+
+  Columns 277 through 282
+
+     1     1     1     1     1     1
+
+  Columns 283 through 288
+
+     1     1     1     1     1     1
+
+  Columns 289 through 294
+
+     1     1     1     1     1     1
+
+  Columns 295 through 300
+
+     1     1     1     1     1     1
+
+  Columns 301 through 306
+
+     1     1     1     1     1     1
+
+  Columns 307 through 312
+
+     1     1     1     1     1     1
+
+  Columns 313 through 318
+
+     1     1     1     1     1     1
+
+  Columns 319 through 324
+
+     1     1     1     1     1     1
+
+  Columns 325 through 330
+
+     1     1     1     1     0     0
+
+  Columns 331 through 336
+
+     0     0     0     0     0     0
+
+  Columns 337 through 342
+
+     0     0     0     0     0     0
+
+  Columns 343 through 348
+
+     0     0     0     0     0     0
+
+  Columns 349 through 354
+
+     0     0     0     0     0     0
+
+  Columns 355 through 360
+
+     0     0     0     0     0     0
+
+  Columns 361 through 366
+
+     0     0     0     0     0     0
+
+  Columns 367 through 372
+
+     0     0     0     0     0     0
+
+  Columns 373 through 378
+
+     0     0     0     0     0     0
+
+  Columns 379 through 384
+
+     0     0     0     0     0     0
+
+  Columns 385 through 390
+
+     0     0     0     0     0     0
+
+  Columns 391 through 396
+
+     0     0     0     0     0     0
+
+  Columns 397 through 402
+
+     0     0     0     0     0     0
+
+  Columns 403 through 408
+
+     0     0     0     0     0     0
+
+  Columns 409 through 414
+
+     0     0     0     0     0     0
+
+  Columns 415 through 420
+
+     0     0     0     0     0     0
+
+  Columns 421 through 426
+
+     0     0     0     0     0     0
+
+  Columns 427 through 432
+
+     0     0     0     0     0     0
+
+  Columns 433 through 438
+
+     0     0     0     0     0     0
+
+  Columns 439 through 444
+
+     0     0     0     0     0     0
+
+  Columns 445 through 450
+
+     0     0     0     0     0     0
+
+  Columns 451 through 456
+
+     1     1     1     1     1     1
+
+  Columns 457 through 462
+
+     1     1     1     1     1     1
+
+  Columns 463 through 468
+
+     1     1     1     1     1     1
+
+  Columns 469 through 474
+
+     1     1     1     1     1     1
+
+  Columns 475 through 480
+
+     1     1     1     1     1     1
+
+  Columns 481 through 486
+
+     1     1     1     1     1     1
+
+  Columns 487 through 492
+
+     1     1     1     1     1     1
+
+  Columns 493 through 498
+
+     1     1     1     1     1     1
+
+  Columns 499 through 504
+
+     1     1     1     1     1     1
+
+  Columns 505 through 510
+
+     1     1     1     1     1     1
+
+  Columns 511 through 516
+
+     1     1     1     1     1     1
+
+  Columns 517 through 522
+
+     1     1     1     1     1     1
+
+  Columns 523 through 528
+
+     1     1     1     1     1     1
+
+  Columns 529 through 534
+
+     1     1     1     1     1     1
+
+  Columns 535 through 540
+
+     1     1     1     1     1     1
+
+  Columns 541 through 546
+
+     1     1     1     1     1     1
+
+  Columns 547 through 552
+
+     1     1     1     1     1     1
+
+  Columns 553 through 558
+
+     1     1     1     1     1     1
+
+  Columns 559 through 564
+
+     1     1     1     1     1     1
+
+  Columns 565 through 570
+
+     1     1     1     1     1     1
+
+  Columns 571 through 576
+
+     1     1     0     0     0     0
+
+  Columns 577 through 582
+
+     0     0     0     0     0     0
+
+  Columns 583 through 588
+
+     0     0     0     0     0     0
+
+  Columns 589 through 594
+
+     0     0     0     0     0     0
+
+  Columns 595 through 600
+
+     0     0     0     0     0     0
+
+  Columns 601 through 606
+
+     1     1     1     1     1     1
+
+  Columns 607 through 612
+
+     1     1     1     1     1     1
+
+  Columns 613 through 618
+
+     1     1     1     1     1     1
+
+  Columns 619 through 624
+
+     1     1     1     1     1     1
+
+  Columns 625 through 630
+
+     1     1     1     1     1     1
+
+  Columns 631 through 636
+
+     1     1     1     1     1     1
+
+  Columns 637 through 642
+
+     1     1     1     1     1     1
+
+  Columns 643 through 648
+
+     1     1     1     1     1     1
+
+  Columns 649 through 654
+
+     1     1     1     1     1     1
+
+  Columns 655 through 660
+
+     1     1     1     1     1     1
+
+  Columns 661 through 666
+
+     1     1     1     1     1     1
+
+  Columns 667 through 672
+
+     1     1     1     1     1     1
+
+  Columns 673 through 678
+
+     1     1     1     1     1     1
+
+  Columns 679 through 684
+
+     1     1     1     1     1     1
+
+  Columns 685 through 690
+
+     1     1     1     1     1     1
+
+  Columns 691 through 696
+
+     1     1     1     1     1     1
+
+  Columns 697 through 702
+
+     1     1     1     1     1     1
+
+  Columns 703 through 708
+
+     1     1     1     1     1     1
+
+  Columns 709 through 714
+
+     1     1     1     1     1     1
+
+  Columns 715 through 720
+
+     1     1     1     1     1     1
+
+  Columns 721 through 726
+
+     1     1     1     1     1     1
+
+  Columns 727 through 732
+
+     1     1     1     1     1     1
+
+  Columns 733 through 738
+
+     1     1     1     1     1     1
+
+  Columns 739 through 744
+
+     1     1     1     1     1     1
+
+  Columns 745 through 750
+
+     1     1     1     1     1     1
+
+  Columns 751 through 756
+
+     1     1     1     1     1     1
+
+  Columns 757 through 762
+
+     1     1     1     1     1     1
+
+  Columns 763 through 768
+
+     1     1     1     1     1     1
+
+  Columns 769 through 774
+
+     1     1     1     1     1     1
+
+  Columns 775 through 780
+
+     1     1     1     1     1     1
+
+  Columns 781 through 786
+
+     1     1     1     1     1     1
+
+  Columns 787 through 792
+
+     1     1     1     1     1     1
+
+  Columns 793 through 798
+
+     1     1     1     1     1     1
+
+  Columns 799 through 804
+
+     1     1     1     1     1     1
+
+  Columns 805 through 810
+
+     1     1     1     1     1     1
+
+  Columns 811 through 816
+
+     1     1     1     1     1     1
+
+  Columns 817 through 822
+
+     1     1     1     1     1     1
+
+  Columns 823 through 828
+
+     1     1     1     1     1     1
+
+  Columns 829 through 834
+
+     1     1     1     1     1     1
+
+  Columns 835 through 840
+
+     1     1     1     1     1     1
+
+  Columns 841 through 846
+
+     1     1     1     1     1     1
+
+  Columns 847 through 852
+
+     1     1     1     1     1     1
+
+  Columns 853 through 858
+
+     1     1     1     1     1     1
+
+  Columns 859 through 864
+
+     1     1     1     1     1     1
+
+  Columns 865 through 870
+
+     1     1     1     1     1     1
+
+  Columns 871 through 876
+
+     1     1     1     1     1     1
+
+  Columns 877 through 882
+
+     1     1     1     1     1     1
+
+  Columns 883 through 888
+
+     1     1     1     1     1     1
+
+  Columns 889 through 894
+
+     1     1     1     1     1     1
+
+  Columns 895 through 900
+
+     1     1     1     1     1     1
+
+  Columns 901 through 906
+
+     1     1     1     1     1     1
+
+  Columns 907 through 912
+
+     1     1     1     1     1     1
+
+  Columns 913 through 918
+
+     1     1     1     1     1     1
+
+  Columns 919 through 924
+
+     1     1     1     1     1     1
+
+  Columns 925 through 930
+
+     1     1     1     1     1     1
+
+  Columns 931 through 936
+
+     1     1     1     1     1     1
+
+  Columns 937 through 942
+
+     1     1     1     1     1     1
+
+  Columns 943 through 948
+
+     1     1     1     1     1     1
+
+  Columns 949 through 954
+
+     1     1     1     1     1     1
+
+  Columns 955 through 960
+
+     1     1     1     1     1     1
+
+  Columns 961 through 966
+
+     1     1     1     1     1     1
+
+  Columns 967 through 972
+
+     1     1     1     1     1     1
+
+  Columns 973 through 978
+
+     1     1     1     1     1     1
+
+  Columns 979 through 984
+
+     1     1     1     1     1     1
+
+  Columns 985 through 990
+
+     1     1     1     1     1     1
+
+  Columns 991 through 996
+
+     1     1     1     1     1     1
+
+  Columns 997 through 1000
+
+     1     1     1     1
+
+%Since this statement is true, the 2 are basically equal
+%The other 2 roots are the roots of m^2+2m+1, namely m=1,1
+help roots
+ <strong>roots</strong>  Find polynomial roots.
+    <strong>roots</strong>(C) computes the roots of the polynomial whose coefficients
+    are the elements of the vector C. If C has N+1 components,
+    the polynomial is C(1)*X^N + ... + C(N)*X + C(N+1).
+ 
+    Note:  Leading zeros in C are discarded first.  Then, leading relative
+    zeros are removed as well.  That is, if division by the leading
+    coefficient results in overflow, all coefficients up to the first
+    coefficient where overflow occurred are also discarded.  This process is
+    repeated until the leading coefficient is not a relative zero.
+ 
+    Class support for input c: 
+       float: double, single
+ 
+    See also <a href="matlab:help poly">poly</a>, <a href="matlab:help residue">residue</a>, <a href="matlab:help fzero">fzero</a>.
+
+    Overloaded methods:
+       <a href="matlab:help gf/roots">gf/roots</a>
+       <a href="matlab:help gpuArray/roots">gpuArray/roots</a>
+       <a href="matlab:help localpoly/roots">localpoly/roots</a>
+
+    Reference page in Help browser
+       <a href="matlab:doc roots">doc roots</a>
+
+roots([1 1 -3 -5 -2])
+
+ans =
+
+   2.0000 + 0.0000i
+  -1.0000 + 0.0000i
+  -1.0000 - 0.0000i
+  -1.0000 + 0.0000i
+
+% Lesson 13
+x=-1:0.02:5;
+for b=-6:2:6
+y=(b+2)*exp(-x)-(b+1)*exp(-2*x);
+plot(x,y)
+hold on
+end
+x=-2:0.02:4;
+for b=-3:1:3
+y=(2*a+1)*exp(-x)-(a+1)*exp(-2*x);
+plot(x,y)
+hold on
+end
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Inner matrix dimensions must agree.
+} 
+x=-2:0.02:4;
+for a=-3:1:3
+y=(2*a+1)*exp(-x)-(a+1)*exp(-2*x);
+plot(x,y)
+hold on
+end
+x=-2:0.02:4;
+for b=-3:1:3
+y=(b+1)/7*exp(6x)-(6-b)/7*exp(-x);
+ y=(b+1)/7*exp(6x)-(6-b)/7*exp(-x);
+                |
+{Error: Unexpected MATLAB expression.
+} 
+x=-2:0.02:4;
+for b=-3:1:3
+y=(b+1)/7*exp(6*x)-(6-b)/7*exp(-x);
+plot(x,y)
+hold on
+end
+b
+
+b =
+
+     3
+
+x=0:0.02:5;
+for a=-3:1:3
+y=(a+1)/7*exp(6*x)-(6*a-1)/7*exp(-x);
+plot(x,y)
+hold on
+end
+x=0:0.02:5;
+for a=-3:1:3
+y=exp(-3*x/2)*(a*cos(sqrt(3)/2*x)+(b+3*a)/2*sin(sqrt(3)/2*x));
+plot(x,y)
+hold on
+end
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('mtimes')" style="font-weight:bold"> * </a>
+Inner matrix dimensions must agree.
+} 
+x=0:0.02:5;
+for a=-3:1:3
+y=exp(-3*x/2).*(1*cos(sqrt(3)/2*x)+(b+3)/2*sin(sqrt(3)/2*x));
+plot(x,y)
+hold on
+end
+x=0:0.02:7;
+for a=-3:1:3
+y=exp(-3*x/2).*(1*cos(sqrt(3)/2*x)+(b+3)/2*sin(sqrt(3)/2*x));
+plot(x,y)
+hold on
+end
+x=0:0.02:7;
+for b=-3:1:3
+y=exp(-3*x/2).*(1*cos(sqrt(3)/2*x)+(b+3)/2*sin(sqrt(3)/2*x));
+plot(x,y)
+hold on
+end
+x=0:0.02:7;
+for a=-3:1:3
+y=exp(-3*x/2).*(a*cos(sqrt(3)/2*x)+(1+3*a)/2*sin(sqrt(3)/2*x));
+plot(x,y)
+hold on
+end
+diary off
